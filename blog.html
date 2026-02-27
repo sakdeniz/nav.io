@@ -1,0 +1,49 @@
+---
+layout: default
+title: Blog
+permalink: /blog/
+---
+<div class="min-h-screen w-full bg-gray-50 dark:bg-gray-900 md:px-16 lg:px-24 xl:px-32">
+  <div class="mx-auto py-20">
+    <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4">
+      Blog
+    </h1>
+    <!-- Posts -->
+    <div class="pt-5 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      {% for post in site.posts %}
+      <div class="border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 text-center flex flex-col">
+        {% if post.image %}
+        <div class="m-10 mb-6 flex justify-center items-center">
+          <a target="_blank" href="{{ post.link }}">
+            <img
+            class="object-cover border-2 dark:border-gray-700 rounded-full max-w-56 max-h-56 shadow-[0px_20px_207px_10px_rgba(165,_39,_255,_0.28)]"
+            src="{{ post.image }}"
+            alt="{{ post.title }}"
+            />
+          </a>
+        </div>
+        {% endif %}
+        <div class="pl-5 pr-5 pb-6 flex flex-col flex-grow">
+          <a target="_blank" href="{{ post.link }}">
+            <h5 class="mb-3 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+              {{ post.title }}
+            </h5>
+          </a>
+          <p class="mb-6 font-normal text-gray-700 dark:text-gray-400 flex-grow">
+            {{ post.excerpt | strip_html | truncate: 160 }}
+          </p>
+          <a target="_blank" href="{{ post.link }}"
+          class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 transition
+          dark:bg-blue-600 dark:hover:bg-blue-700">
+          Read article
+          <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M1 5h12m0 0L9 1m4 4L9 9"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+</section>

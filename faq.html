@@ -1,0 +1,38 @@
+---
+layout: default
+title: FAQ
+permalink: /faq/
+---
+<div class="min-h-screen w-full bg-gray-50 dark:bg-gray-900 md:px-16 lg:px-24 xl:px-32">
+  <div class="mx-auto py-20">
+    <div class="mb-16">
+      <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4">
+        Frequently Asked Questions
+      </h1>
+      <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl">
+      Find answers to recurring questions and concerns about Navio.</p>
+    </div>
+    <div class="grid gap-6 md:grid-cols-1">
+      {% for item in site.data.faq %}
+      <div
+      class="rounded-2xl border dark:border-gray-700
+      bg-white dark:bg-gray-800
+      shadow-sm hover:shadow-md
+      transition-all duration-300">
+
+      <div class="p-6">
+        <h3 class="text-lg font-semibold mb-3
+        text-slate-900 dark:text-white">
+        {{ item.question }}
+      </h3>
+      <div
+      class="text-base leading-relaxed
+      text-slate-600 dark:text-slate-300">
+      {{ item.answer }}
+    </div>
+  </div>
+</div>
+{% endfor %}
+</div>
+</div>
+</section>

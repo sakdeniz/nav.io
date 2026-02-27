@@ -1,0 +1,4 @@
+- name: BasicSwap DEX
+  url: https://basicswapdex.com/
+  logo: /assets/images/resources/exchanges/basicswap.svg
+  status: soon

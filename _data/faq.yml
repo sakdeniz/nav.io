@@ -1,0 +1,138 @@
+- question: What is Navio?
+  answer: >
+    Navio is the world's only fully private blockchain powered by our unique Proof-of-Private-Stake (PoPS) consensus mechanism.
+    <br><br>Designed as a decentralized privacy platform, Navio makes private blockchain applications easily accessible to anyone. Running on the cutting-edge blsCT protocol and PoPS consensus, every transaction on this chain remains private by default.
+    <br><br>We facilitate anonymous payments, enable decentralized banking and provide a truly untraceable blockchain experience.
+
+- question: Why is Navio called "Navio"?
+  answer: >
+    The name Navio comes from NAV + IO. NAV stands for Network of Anonymous Validators,
+    reflecting a consensus layer where validator identities and stake amounts remain
+    private. IO refers to Inputs and Outputs, the fundamental structure of transactions.
+    <br><br>
+    Together, Navio represents private validators securing private inputs and outputs.
+    Privacy is enforced at both the consensus and transaction layers, not added as an
+    afterthought.
+
+- question: How can I get Navio?
+  answer: >
+    You can acquire NAV by purchasing it on supported centralized exchanges,
+    swapping for it on decentralized exchanges, or receiving it directly from
+    another Navio holder via a peer-to-peer transfer. After acquiring NAV, you
+    should move it to a Navio-compatible wallet to hold it privately, stake it,
+    and participate in the network and its privacy-first ecosystem.
+    <br><br>
+    A list of supported exchanges is available on the official Navio website.
+
+- question: How is Navio different from Bitcoin?
+  answer: >
+    Bitcoin secures trust by putting everything in the open. Transactions, balances,
+    and miner activity are permanently visible, and security is enforced through
+    energy-intensive mining.
+    <br><br>
+    Navio secures trust by hiding what does not need to be seen. It uses privacy-by-default
+    transactions and private staking to verify the system without exposing users,
+    validators, or stake distribution.
+    <br><br>
+    Bitcoin proves honesty through exposure; Navio proves it through cryptography.
+
+- question: What is PoPS (Proof-of-Private-Stake)?
+  answer: >
+    PoPS (Proof-of-Private-Stake) is Navio’s consensus mechanism. It secures the network
+    through staking without revealing validator identities or stake amounts.
+    <br><br>
+    In traditional Proof of Stake systems, staking information is public, which leaks
+    data about who controls the network. PoPS removes this exposure, allowing the
+    network to remain secure while achieving full anonymity at the consensus layer,
+    something traditional PoS systems cannot provide.
+
+- question: Are there videos available to learn about Navio?
+  answer: >
+    Yes. Navio provides video tutorials and educational content covering the protocol,
+    wallets, staking, and privacy concepts. Links to official video resources can be
+    found on the Navio website and community channels.
+
+- question: Does Navio have a block size limit?
+  answer: >
+    Yes. Navio has a maximum block size of 4 MB. This provides enough room for
+    privacy-heavy transactions without allowing blocks to grow so large that only
+    powerful machines can keep up.
+    <br><br>
+    The limit preserves strong default privacy while keeping the network fast,
+    decentralized, and practical to run.
+
+- question: How does Navio provide privacy shielding for tokens from other blockchains?
+  answer: >
+    Navio enables privacy shielding by allowing external assets to be represented
+    within Navio’s privacy-preserving transaction system. Once shielded, these assets
+    benefit from Navio’s default privacy guarantees, including hidden senders,
+    receivers, and amounts.
+    <br><br>
+    This allows users to interact with assets from other blockchains without exposing
+    transaction metadata on public ledgers, while still maintaining cryptographic
+    correctness and verifiability.
+
+- question: How can I contribute to Navio?
+  answer: >
+    Navio is an open-source, privacy-first project, and contributions are welcome
+    from both technical and non-technical participants.
+
+    <br><br><strong>1) Contributing to the codebase</strong><br>
+    Developers can help by auditing cryptography, improving performance, fixing bugs,
+    or building wallets, tooling, and integrations. This is high-impact work, as
+    privacy systems benefit enormously from peer review and real-world testing.
+
+    <br><br><strong>2) Privacy research and cryptographic review</strong><br>
+    Researchers can contribute by reviewing assumptions, stress-testing threat models,
+    proposing protocol improvements, and identifying edge-case privacy leaks. In
+    privacy systems, critique is a contribution, not an attack.
+
+    <br><br><strong>3) Ecosystem and community building</strong><br>
+    Non-technical contributions matter deeply. Documentation, tutorials, education,
+    translations, and community moderation all help ensure privacy technology is used
+    correctly. Privacy fails if users do not understand the tools they are given.
+
+- question: How is Navio's privacy different from other coins?
+  answer: >
+    Navio uses blsCT (Boneh–Lynn–Shacham Confidential Transactions) with Pedersen commitments to hide amounts, 
+    conceal sender and receiver links, and extend privacy into staking through Proof-of-Private-Stake, 
+    aiming for protocol-wide privacy by default.
+    <br>
+    Monero uses ring signatures to obscure the sender, stealth addresses for the receiver, and RingCT 
+    with Pedersen commitments to hide amounts, delivering strong default transaction privacy but limited 
+    to payments within its Proof-of-Work model.
+    <br>
+    Zcash relies on zk-SNARK zero-knowledge proofs to fully shield transactions when users opt into 
+    shielded addresses, offering powerful privacy but in an optional and mixed transparent system.
+    <br>
+    In short: Monero perfects transaction-level anonymity, Zcash offers optional zero-knowledge shielding, 
+    while Navio combines confidential transactions with BLS aggregation and private staking to push privacy deeper into the consensus layer itself.
+
+
+- question: If Navio is so private how do we know they're not being created out of thin air?
+  answer: >
+    Navio hides transaction amounts using Pedersen commitments, but each transaction still includes mathematical proofs 
+    that the total inputs equal the total outputs. Validators can verify the arithmetic without seeing the actual numbers, 
+    so no extra coins can be created secretly. If someone tries to create coins “out of thin air,” the cryptographic proof fails 
+    and the network rejects the transaction. 
+    <br>
+    Privacy hides the data, not the rules of supply.
+
+
+- question: Why is Proof-of-Private-Stake (PoPS) more secure than Proof-of-Work (PoW)?
+  answer: >
+    Proof-of-Private-Stake (PoPS) is generally more secure than Proof-of-Work (PoW) because attacking it requires owning and risking 
+    a large portion of the actual coin supply, not just renting computational power.
+    <br>
+    In PoW systems like Monero, an attacker can potentially rent or accumulate enough hash power to attempt a 51 percent attack 
+    without owning much of the coin itself. In PoPS, an attacker must acquire a significant share of the total stake, which is 
+    typically far more expensive and directly exposes their funds to penalties or loss if they act maliciously.
+    <br>
+    Additionally:<br>
+    • No ASIC or mining hardware centralization risk<br>
+    • No reliance on electricity dominance<br>
+    • Validators have capital locked and at risk<br>
+    • Private staking reduces visibility of validator balances, lowering targeted attack vectors<br>
+    <br>
+    In short, PoPS ties network security to economic ownership and direct financial risk, making attacks 
+    structurally more costly and self damaging than hash-based attacks in PoW.

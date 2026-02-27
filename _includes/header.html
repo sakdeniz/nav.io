@@ -1,0 +1,77 @@
+<nav class="flex items-center justify-between p-4 bg-gradient-to-bl from-purple-900 via-gray-900 to-gray-900 md:px-16 lg:px-24 xl:px-32 w-full">
+	<a href="{{ site.baseurl }}/">
+		<img src="{{ site.baseurl }}/assets/images/logo.svg" class="h-8" alt="Navio Logo" />
+	</a>
+<ul id="menu" class="max-md:absolute max-md:h-full max-md:w-full max-md:top-0 max-md:-left-full transition-all duration-300 max-md:backdrop-blur max-md:bg-black/40 max-md:text-base flex flex-col md:flex-row items-center justify-center gap-8 font-medium" style="z-index: 999999;">
+	<li onclick="closeNavbar()">
+		<a href="{{ site.baseurl }}/#mission" class="block py-2 px-3 md:p-0 text-white rounded transition-all duration-300 hover:scale-110 hover:-translate-y-0.5 relative group">
+			Mission
+			<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-500"></span>
+		</a>
+	</li>
+	<li onclick="closeNavbar()">
+		<a href="{{ site.baseurl }}/#features" class="block py-2 px-3 md:p-0 text-white rounded transition-all duration-300 hover:scale-110 hover:-translate-y-0.5 relative group">
+			Features
+			<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-500"></span>
+		</a>
+	</li>
+	<li onclick="closeNavbar()">
+		<a href="{{ site.baseurl }}/#ecosystem" class="block py-2 px-3 md:p-0 text-white rounded transition-all duration-300 hover:scale-110 hover:-translate-y-0.5 relative group">
+			Ecosystem
+			<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-500"></span>
+		</a>
+	</li>
+	<li onclick="closeNavbar()">
+		<a href="{{ site.baseurl }}/#roadmap" class="block py-2 px-3 md:p-0 text-white rounded transition-all duration-300 hover:scale-110 hover:-translate-y-0.5 relative group">
+			Roadmap
+			<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-500"></span>
+		</a>
+	</li>
+	<li onclick="closeNavbar()">
+		<a href="{{ site.baseurl }}/resources" class="block py-2 px-3 md:p-0 text-white rounded transition-all duration-300 hover:scale-110 hover:-translate-y-0.5 relative group">
+			Resources
+			<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-500"></span>
+		</a>
+	</li>
+	<li onclick="closeNavbar()">
+		<a href="{{ site.baseurl }}/blog" class="block py-2 px-3 md:p-0 text-white rounded transition-all duration-300 hover:scale-110 hover:-translate-y-0.5 relative group">
+			Blog
+			<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-500"></span>
+		</a>
+	</li>
+	<button id="close-menu" class="md:hidden bg-gray-800 hover:bg-black text-white p-2 rounded-md aspect-square font-medium transition-all duration-300 hover:scale-110 hover:rotate-90">
+		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#ffffff"
+		stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+		<path d="M18 6 6 18" />
+		<path d="m6 6 12 12" />
+	</svg>
+</button>
+</ul>
+<button id="open-menu" class="md:hidden">
+	<svg class="size-7 text-white" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+	stroke-linecap="round" stroke-linejoin="round">
+	<path d="M4 6h16M4 12h16M4 18h16" />
+</svg>
+</button>
+<a href="{{ site.baseurl }}/wallets" class="max-md:hidden px-6 py-2.5 transition text-white rounded-full bg-gradient-to-tl from-indigo-500 to-fuchsia-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none flex items-center gap-2">
+	<svg class="w-4 h-4 fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M64 32C28.7 32 0 60.7 0 96L0 384c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-192c0-35.3-28.7-64-64-64L72 128c-13.3 0-24-10.7-24-24S58.7 80 72 80l384 0c13.3 0 24-10.7 24-24s-10.7-24-24-24L64 32zM416 256a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg>    <span>Wallets</span>
+</a></nav>
+<script>
+	const menu = document.getElementById('menu');
+	const closeMenu = document.getElementById('close-menu');
+	const openMenu = document.getElementById('open-menu');
+
+	openMenu.addEventListener('click', () => {
+		menu.classList.remove('max-md:-left-full');
+		menu.classList.add('max-md:left-0');
+	});
+
+	function closeNavbar() {
+		menu.classList.remove('max-md:left-0');
+		menu.classList.add('max-md:-left-full');
+	}
+
+	closeMenu.addEventListener('click', () => {
+		closeNavbar();
+	});
+</script>
