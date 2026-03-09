@@ -17,7 +17,7 @@ permalink: /blog/
           <a target="_blank" href="{{ post.link }}">
             <img
             class="object-cover border-2 dark:border-gray-700 rounded-full max-w-56 max-h-56 shadow-[0px_20px_207px_10px_rgba(165,_39,_255,_0.28)]"
-            src="{{ post.image }}"
+            src="{{ post.image | relative_url }}"
             alt="{{ post.title }}"
             />
           </a>
