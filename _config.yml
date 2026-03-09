@@ -22,7 +22,7 @@ title: Navio
 email: info@nav.io
 description: >- # this means to ignore newlines until "baseurl:"
   Navio is the world's only fully private blockchain powered by our unique Proof-of-Private-Stake (PoPS) consensus mechanism.
-baseurl: "" # the subpath of your site, e.g. /blog
+baseurl: "/nav.io" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: navio_official
 github_username:  nav-io
