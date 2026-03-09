@@ -1,6 +1,6 @@
 ---
 title: "Mainnet Transition Update"
-image: /assets/images/news-04.webp
+image: assets/images/news-04.webp
 link: https://medium.com/nav-coin/network-upgrade-and-mainnet-transition-update-40785628402d
 ---
 

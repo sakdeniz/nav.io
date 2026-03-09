@@ -1,6 +1,6 @@
 ---
 title: "Introducing Navio"
-image: /assets/images/news-03.jpg
+image: assets/images/news-03.jpg
 link: https://navio.medium.com/introducing-navio-2587cbc3c7b2
 ---
 

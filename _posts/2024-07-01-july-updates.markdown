@@ -1,6 +1,6 @@
 ---
 title: "July Updates"
-image: /assets/images/news-01.jpg
+image: assets/images/news-01.jpg
 link: https://medium.com/nav-coin/2024-july-updates-4ff6b62cfc82
 ---
 
