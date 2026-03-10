@@ -5,10 +5,12 @@ permalink: /404.html
 <head>
   <title>404 - Page not found</title>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body{
-      padding: 0px;
-      margin: 0px;
+    body {
+      padding: 0;
+      margin: 0;
     }
     .page-404 {
       min-height: 100vh;
@@ -19,33 +21,43 @@ permalink: /404.html
       font-family: 'Sora', sans-serif;
       overflow: hidden;
       position: relative;
-      margin: 0;
-      padding: 0;
     }
 
     .orb {
       position: absolute;
       border-radius: 50%;
       filter: blur(80px);
-      opacity: 0.15;
+      opacity: 0.12;
       pointer-events: none;
     }
     .orb-1 {
-      width: 400px; height: 400px;
+      width: 500px; height: 500px;
       background: #6366f1;
-      top: -100px; left: -100px;
+      top: -150px; left: -150px;
       animation: orbFloat 8s ease-in-out infinite alternate;
     }
     .orb-2 {
-      width: 300px; height: 300px;
-      background: #0ea5e9;
-      bottom: -80px; right: -80px;
+      width: 350px; height: 350px;
+      background: #8b5cf6;
+      bottom: -100px; right: -100px;
       animation: orbFloat 10s ease-in-out infinite alternate-reverse;
+    }
+    .orb-3 {
+      width: 200px; height: 200px;
+      background: #a855f7;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.08;
+      animation: orbPulse 4s ease-in-out infinite;
     }
 
     @keyframes orbFloat {
       from { transform: translate(0, 0) scale(1); }
       to   { transform: translate(30px, 20px) scale(1.1); }
+    }
+    @keyframes orbPulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.08; }
+      50%       { transform: translate(-50%, -50%) scale(1.4); opacity: 0.15; }
     }
 
     .page-404::before {
@@ -53,8 +65,8 @@ permalink: /404.html
       position: absolute;
       inset: 0;
       background-image:
-      linear-gradient(rgba(99,102,241,0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(99,102,241,0.05) 1px, transparent 1px);
+        linear-gradient(rgba(99,102,241,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(99,102,241,0.04) 1px, transparent 1px);
       background-size: 48px 48px;
       animation: gridDrift 20s linear infinite;
       pointer-events: none;
@@ -63,6 +75,24 @@ permalink: /404.html
     @keyframes gridDrift {
       0%   { transform: translateY(0); }
       100% { transform: translateY(48px); }
+    }
+
+    /* Scanning line */
+    .page-404::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(139,92,246,0.4), transparent);
+      animation: scanLine 6s linear infinite;
+      pointer-events: none;
+      z-index: 1;
+    }
+    @keyframes scanLine {
+      0%   { top: -2px; opacity: 0; }
+      5%   { opacity: 1; }
+      95%  { opacity: 1; }
+      100% { top: 100%; opacity: 0; }
     }
 
     .content-404 {
@@ -74,20 +104,68 @@ permalink: /404.html
       padding: 2rem 1.5rem;
     }
 
+    /* ── Eye illustration ── */
     .illustration {
       margin: 0 auto 2rem;
-      width: 180px;
-      height: 180px;
+      width: 200px;
+      height: 200px;
       animation: fadeSlideDown 0.7s 0.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+      position: relative;
     }
 
-    .float-slow { animation: floatY 4s ease-in-out infinite alternate; }
-    .float-mid  { animation: floatY 3s ease-in-out infinite alternate-reverse; }
-    .float-fast { animation: floatY 2.5s ease-in-out infinite alternate; }
+    .eye-outer {
+      animation: eyeBlink 5s ease-in-out infinite;
+      transform-origin: center;
+    }
+    @keyframes eyeBlink {
+      0%, 45%, 55%, 100% { transform: scaleY(1); }
+      50% { transform: scaleY(0.05); }
+    }
 
-    @keyframes floatY {
-      from { transform: translateY(0px) rotate(0deg); }
-      to   { transform: translateY(-10px) rotate(3deg); }
+    .eye-pupil {
+      animation: eyeMove 8s ease-in-out infinite;
+      transform-origin: center;
+    }
+    @keyframes eyeMove {
+      0%, 100% { transform: translate(0px, 0px); }
+      20%  { transform: translate(6px, -3px); }
+      40%  { transform: translate(-5px, 4px); }
+      60%  { transform: translate(4px, 5px); }
+      80%  { transform: translate(-6px, -4px); }
+    }
+
+    .iris-glow {
+      animation: irisGlow 3s ease-in-out infinite alternate;
+    }
+    @keyframes irisGlow {
+      from { opacity: 0.6; }
+      to   { opacity: 1; }
+    }
+
+    /* Rotating surveillance ring */
+    .scan-ring {
+      animation: rotateScan 8s linear infinite;
+      transform-origin: 100px 100px;
+    }
+    .scan-ring-reverse {
+      animation: rotateScan 12s linear infinite reverse;
+      transform-origin: 100px 100px;
+    }
+    @keyframes rotateScan {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    /* Data stream dots around eye */
+    .data-dot {
+      animation: dataPulse 2s ease-in-out infinite;
+    }
+    .data-dot:nth-child(2) { animation-delay: 0.3s; }
+    .data-dot:nth-child(3) { animation-delay: 0.6s; }
+    .data-dot:nth-child(4) { animation-delay: 0.9s; }
+    @keyframes dataPulse {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 1; }
     }
 
     .error-badge {
@@ -96,9 +174,9 @@ permalink: /404.html
       gap: 0.4rem;
       font-family: 'DM Mono', monospace;
       font-size: 0.7rem;
-      color: #6366f1;
-      background: rgba(99,102,241,0.1);
-      border: 1px solid rgba(99,102,241,0.2);
+      color: #a855f7;
+      background: rgba(168,85,247,0.1);
+      border: 1px solid rgba(168,85,247,0.25);
       border-radius: 9999px;
       padding: 0.3rem 0.8rem;
       margin-bottom: 1.5rem;
@@ -107,7 +185,7 @@ permalink: /404.html
     .error-badge::before {
       content: '';
       width: 6px; height: 6px;
-      background: #6366f1;
+      background: #a855f7;
       border-radius: 50%;
       animation: pulse 2s infinite;
     }
@@ -134,7 +212,7 @@ permalink: /404.html
       content: '404';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, #6366f1, #0ea5e9);
+      background: linear-gradient(135deg, #a855f7, #6366f1);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -178,6 +256,12 @@ permalink: /404.html
       animation: fadeSlideDown 0.7s 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
 
+    .subtitle em {
+      color: #a855f7;
+      font-style: normal;
+      font-weight: 400;
+    }
+
     .actions {
       display: flex;
       gap: 0.75rem;
@@ -191,7 +275,7 @@ permalink: /404.html
       align-items: center;
       gap: 0.5rem;
       padding: 0.75rem 1.5rem;
-      background: linear-gradient(135deg, #ba63f1, #4f46e5);
+      background: linear-gradient(135deg, #a855f7, #6366f1);
       color: #fff;
       font-family: 'Sora', sans-serif;
       font-size: 0.875rem;
@@ -203,7 +287,7 @@ permalink: /404.html
     .btn-primary:hover {
       opacity: 0.9;
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(99,102,241,0.45);
+      box-shadow: 0 8px 24px rgba(168,85,247,0.4);
     }
 
     .btn-secondary {
@@ -232,59 +316,97 @@ permalink: /404.html
       to   { opacity: 1; transform: translateY(0); }
     }
   </style>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
   <div class="page-404">
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
     <div class="content-404">
+
+      <!-- Eye Illustration -->
       <div class="illustration">
-        <svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle class="float-slow" cx="20" cy="30" r="1.5" fill="#94a3b8" opacity="0.6"/>
-          <circle class="float-mid" cx="155" cy="20" r="1" fill="#94a3b8" opacity="0.5"/>
-          <circle class="float-fast" cx="140" cy="155" r="1.5" fill="#94a3b8" opacity="0.4"/>
-          <circle class="float-slow" cx="30" cy="145" r="1" fill="#94a3b8" opacity="0.5"/>
-          <circle class="float-mid" cx="165" cy="80" r="1" fill="#6366f1" opacity="0.6"/>
-          <circle class="float-fast" cx="15" cy="90" r="1.5" fill="#0ea5e9" opacity="0.5"/>
-          <circle class="float-slow" cx="145" cy="40" r="22" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
-          <ellipse cx="145" cy="40" rx="22" ry="6" fill="none" stroke="#475569" stroke-width="1" opacity="0.5"/>
-          <circle cx="140" cy="35" r="4" fill="#334155"/>
-          <circle cx="151" cy="44" r="2.5" fill="#334155"/>
-          <g class="float-mid" style="transform-origin: 90px 95px;">
-            <rect x="68" y="95" width="44" height="42" rx="14" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
-            <rect x="78" y="103" width="24" height="14" rx="4" fill="#0f172a" stroke="#334155" stroke-width="1"/>
-            <circle cx="85" cy="110" r="2" fill="#6366f1" opacity="0.8"/>
-            <circle cx="90" cy="110" r="2" fill="#0ea5e9" opacity="0.8"/>
-            <circle cx="95" cy="110" r="2" fill="#10b981" opacity="0.8"/>
-            <circle cx="90" cy="82" r="22" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
-            <ellipse cx="90" cy="80" rx="13" ry="11" fill="#0f172a" stroke="#6366f1" stroke-width="1" opacity="0.9"/>
-            <ellipse cx="85" cy="75" rx="4" ry="3" fill="#6366f1" opacity="0.15"/>
-            <path d="M84 73 Q87 71 90 73" stroke="#6366f1" stroke-width="0.8" fill="none" opacity="0.4"/>
-            <rect x="48" y="98" width="22" height="12" rx="6" fill="#1e293b" stroke="#475569" stroke-width="1.5" transform="rotate(20 48 98)"/>
-            <circle cx="42" cy="118" r="7" fill="#334155" stroke="#475569" stroke-width="1"/>
-            <rect x="110" y="98" width="22" height="12" rx="6" fill="#1e293b" stroke="#475569" stroke-width="1.5" transform="rotate(-20 132 98)"/>
-            <circle cx="138" cy="118" r="7" fill="#334155" stroke="#475569" stroke-width="1"/>
-            <rect x="72" y="132" width="14" height="22" rx="6" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
-            <rect x="94" y="132" width="14" height="22" rx="6" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
-            <rect x="69" y="150" width="20" height="10" rx="4" fill="#334155" stroke="#475569" stroke-width="1"/>
-            <rect x="91" y="150" width="20" height="10" rx="4" fill="#334155" stroke="#475569" stroke-width="1"/>
+        <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+          <!-- Outer surveillance rings -->
+          <g class="scan-ring">
+            <circle cx="100" cy="100" r="90" stroke="rgba(168,85,247,0.12)" stroke-width="1" stroke-dasharray="4 8"/>
           </g>
-          <g class="float-fast" style="transform-origin: 35px 70px;">
-            <rect x="28" y="64" width="14" height="4" rx="2" fill="#475569" transform="rotate(-30 28 64)"/>
-            <circle cx="27" cy="62" r="5" fill="none" stroke="#475569" stroke-width="2"/>
-            <circle cx="42" cy="74" r="4" fill="none" stroke="#475569" stroke-width="2"/>
+          <g class="scan-ring-reverse">
+            <circle cx="100" cy="100" r="78" stroke="rgba(99,102,241,0.15)" stroke-width="1" stroke-dasharray="2 6"/>
           </g>
+
+          <!-- Data dots on outer ring -->
+          <circle class="data-dot" cx="100" cy="10" r="2.5" fill="#a855f7"/>
+          <circle class="data-dot" cx="190" cy="100" r="2.5" fill="#6366f1"/>
+          <circle class="data-dot" cx="100" cy="190" r="2.5" fill="#a855f7"/>
+          <circle class="data-dot" cx="10" cy="100" r="2.5" fill="#6366f1"/>
+
+          <!-- Eye white / sclera -->
+          <g class="eye-outer">
+            <ellipse cx="100" cy="100" rx="62" ry="38" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+
+            <!-- Iris -->
+            <g class="eye-pupil">
+              <circle cx="100" cy="100" r="26" fill="#1e1b4b"/>
+              <!-- Iris texture rings -->
+              <circle cx="100" cy="100" r="26" fill="none" stroke="rgba(168,85,247,0.3)" stroke-width="1"/>
+              <circle cx="100" cy="100" r="20" fill="none" stroke="rgba(168,85,247,0.2)" stroke-width="0.8"/>
+              <circle cx="100" cy="100" r="14" fill="none" stroke="rgba(99,102,241,0.3)" stroke-width="0.8"/>
+
+              <!-- Iris glow fill -->
+              <circle class="iris-glow" cx="100" cy="100" r="26"
+                fill="url(#irisGrad)"/>
+
+              <!-- Pupil -->
+              <circle cx="100" cy="100" r="10" fill="#050816"/>
+
+              <!-- Pupil inner glow -->
+              <circle cx="100" cy="100" r="7" fill="url(#pupilGrad)"/>
+
+              <!-- Highlight -->
+              <ellipse cx="94" cy="94" rx="4" ry="3" fill="white" opacity="0.15"/>
+              <circle cx="106" cy="106" r="1.5" fill="white" opacity="0.08"/>
+            </g>
+          </g>
+
+          <!-- Eyelid lines -->
+          <path d="M38 100 Q100 62 162 100" stroke="#475569" stroke-width="1" fill="none" opacity="0.5"/>
+          <path d="M38 100 Q100 138 162 100" stroke="#475569" stroke-width="1" fill="none" opacity="0.5"/>
+
+          <!-- Corner detail marks -->
+          <line x1="32" y1="96" x2="32" y2="104" stroke="#6366f1" stroke-width="1.5" opacity="0.6"/>
+          <line x1="168" y1="96" x2="168" y2="104" stroke="#6366f1" stroke-width="1.5" opacity="0.6"/>
+
+          <!-- Small tracking brackets -->
+          <path d="M72 72 L62 72 L62 82" stroke="#a855f7" stroke-width="1" fill="none" opacity="0.5"/>
+          <path d="M128 72 L138 72 L138 82" stroke="#a855f7" stroke-width="1" fill="none" opacity="0.5"/>
+          <path d="M72 128 L62 128 L62 118" stroke="#a855f7" stroke-width="1" fill="none" opacity="0.5"/>
+          <path d="M128 128 L138 128 L138 118" stroke="#a855f7" stroke-width="1" fill="none" opacity="0.5"/>
+
+          <!-- Gradients -->
+          <defs>
+            <radialGradient id="irisGrad" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#7c3aed" stop-opacity="0.6"/>
+              <stop offset="60%" stop-color="#4f46e5" stop-opacity="0.3"/>
+              <stop offset="100%" stop-color="#1e1b4b" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="pupilGrad" cx="40%" cy="40%" r="60%">
+              <stop offset="0%" stop-color="#a855f7" stop-opacity="0.4"/>
+              <stop offset="100%" stop-color="#050816" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
         </svg>
       </div>
 
-      <div class="error-badge">HTTP_STATUS · 404 · NOT_FOUND</div>
+      <div class="error-badge">SURVEILLANCE · DETECTED · 404</div>
       <div class="number-404">404</div>
-      <p class="tagline">Lost in space</p>
+      <p class="tagline">You weren't supposed to see this.</p>
       <p class="subtitle">
-        This page has drifted out of orbit.<br>
-        It may have been moved, deleted, or never existed.
+        This page doesn't exist — and neither does your search history.<br>
+        With Navio, <em>privacy is the default</em>, not a feature.<br>
+        Now go back where no one can track you.
       </p>
 
       <div class="actions">
@@ -293,7 +415,7 @@ permalink: /404.html
             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
             <polyline points="9 22 9 12 15 12 15 22"/>
           </svg>
-          Back to Home
+          Back to Safety
         </a>
         <a href="javascript:history.back()" class="btn-secondary">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -304,5 +426,5 @@ permalink: /404.html
       </div>
     </div>
   </div>
-  <body>
-    </html>
+</body>
+</html>
