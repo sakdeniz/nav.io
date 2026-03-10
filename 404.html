@@ -1,24 +1,328 @@
 ---
 permalink: /404.html
 ---
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-<style type="text/css" media="screen">
-  .container {
-    margin: 10px auto;
-    max-width: 600px;
-    text-align: center;
+<style>
+  .page-404 {
+    min-height: 100vh;
+    background-color: #111827;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Sora', sans-serif;
+    overflow: hidden;
+    position: relative;
+    padding: 2rem;
   }
-  h1 {
-    margin: 30px 0;
-    font-size: 4em;
+
+  /* Animated background grid */
+  .page-404::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(99,102,241,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(99,102,241,0.05) 1px, transparent 1px);
+    background-size: 48px 48px;
+    animation: gridDrift 20s linear infinite;
+    pointer-events: none;
+  }
+
+  @keyframes gridDrift {
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(48px); }
+  }
+
+  /* Glow orbs */
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.15;
+    pointer-events: none;
+  }
+  .orb-1 {
+    width: 400px; height: 400px;
+    background: #6366f1;
+    top: -100px; left: -100px;
+    animation: orbFloat 8s ease-in-out infinite alternate;
+  }
+  .orb-2 {
+    width: 300px; height: 300px;
+    background: #0ea5e9;
+    bottom: -80px; right: -80px;
+    animation: orbFloat 10s ease-in-out infinite alternate-reverse;
+  }
+
+  @keyframes orbFloat {
+    from { transform: translate(0, 0) scale(1); }
+    to   { transform: translate(30px, 20px) scale(1.1); }
+  }
+
+  .content-404 {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    max-width: 560px;
+  }
+
+  /* Big 404 number */
+  .number-404 {
+    font-size: clamp(7rem, 20vw, 12rem);
+    font-weight: 800;
     line-height: 1;
-    letter-spacing: -1px;
+    letter-spacing: -0.05em;
+    background: linear-gradient(135deg, #e2e8f0 0%, #94a3b8 50%, #475569 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    animation: fadeSlideDown 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  /* Glitch effect on 404 */
+  .number-404::before,
+  .number-404::after {
+    content: '404';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #6366f1, #0ea5e9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .number-404::before {
+    animation: glitch1 4s infinite;
+    clip-path: polygon(0 20%, 100% 20%, 100% 40%, 0 40%);
+  }
+  .number-404::after {
+    animation: glitch2 4s infinite;
+    clip-path: polygon(0 60%, 100% 60%, 100% 75%, 0 75%);
+  }
+
+  @keyframes glitch1 {
+    0%, 90%, 100% { transform: translate(0); opacity: 0; }
+    92% { transform: translate(-4px, 1px); opacity: 0.6; }
+    94% { transform: translate(4px, -1px); opacity: 0.6; }
+    96% { transform: translate(0); opacity: 0; }
+  }
+  @keyframes glitch2 {
+    0%, 85%, 100% { transform: translate(0); opacity: 0; }
+    87% { transform: translate(4px, 2px); opacity: 0.5; }
+    89% { transform: translate(-4px, -2px); opacity: 0.5; }
+    91% { transform: translate(0); opacity: 0; }
+  }
+
+  /* SVG Illustration */
+  .illustration {
+    margin: 0 auto 2rem;
+    width: 180px;
+    height: 180px;
+    animation: fadeSlideDown 0.7s 0.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  /* Floating astronaut pieces */
+  .float-slow { animation: floatY 4s ease-in-out infinite alternate; }
+  .float-mid  { animation: floatY 3s ease-in-out infinite alternate-reverse; }
+  .float-fast { animation: floatY 2.5s ease-in-out infinite alternate; }
+
+  @keyframes floatY {
+    from { transform: translateY(0px) rotate(0deg); }
+    to   { transform: translateY(-10px) rotate(3deg); }
+  }
+
+  .tagline {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #f1f5f9;
+    margin: 0 0 0.75rem;
+    animation: fadeSlideDown 0.7s 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .subtitle {
+    font-size: 0.95rem;
+    color: #64748b;
+    font-weight: 300;
+    line-height: 1.7;
+    margin: 0 0 2.5rem;
+    animation: fadeSlideDown 0.7s 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .actions {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeSlideDown 0.7s 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: #4f46e5;
+    color: #fff;
+    font-family: 'Sora', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 0 0 0 rgba(99,102,241,0);
+  }
+  .btn-primary:hover {
+    background: #4338ca;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(99,102,241,0.35);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: transparent;
+    color: #94a3b8;
+    font-family: 'Sora', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    border: 1px solid #334155;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s, transform 0.2s;
+  }
+  .btn-secondary:hover {
+    border-color: #64748b;
+    color: #e2e8f0;
+    transform: translateY(-2px);
+  }
+
+  /* Error code badge */
+  .error-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: #6366f1;
+    background: rgba(99,102,241,0.1);
+    border: 1px solid rgba(99,102,241,0.2);
+    border-radius: 9999px;
+    padding: 0.3rem 0.8rem;
+    margin-bottom: 1.5rem;
+    animation: fadeSlideDown 0.7s 0s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .error-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: #6366f1;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+  }
+
+  @keyframes fadeSlideDown {
+    from { opacity: 0; transform: translateY(-16px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 </style>
 
-<div class="container">
-  <h1>404</h1>
+<div class="page-404">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
 
-  <p><strong>Page not found :(</strong></p>
-  <p>The requested page could not be found.</p>
+  <div class="content-404">
+    <!-- Floating astronaut SVG illustration -->
+    <div class="illustration">
+      <svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Stars background -->
+        <circle class="float-slow" cx="20" cy="30" r="1.5" fill="#94a3b8" opacity="0.6"/>
+        <circle class="float-mid" cx="155" cy="20" r="1" fill="#94a3b8" opacity="0.5"/>
+        <circle class="float-fast" cx="140" cy="155" r="1.5" fill="#94a3b8" opacity="0.4"/>
+        <circle class="float-slow" cx="30" cy="145" r="1" fill="#94a3b8" opacity="0.5"/>
+        <circle class="float-mid" cx="165" cy="80" r="1" fill="#6366f1" opacity="0.6"/>
+        <circle class="float-fast" cx="15" cy="90" r="1.5" fill="#0ea5e9" opacity="0.5"/>
+
+        <!-- Planet (background) -->
+        <circle class="float-slow" cx="145" cy="40" r="22" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+        <ellipse cx="145" cy="40" rx="22" ry="6" fill="none" stroke="#475569" stroke-width="1" opacity="0.5"/>
+        <circle cx="140" cy="35" r="4" fill="#334155"/>
+        <circle cx="151" cy="44" r="2.5" fill="#334155"/>
+
+        <!-- Astronaut body -->
+        <g class="float-mid" style="transform-origin: 90px 95px;">
+          <!-- Suit body -->
+          <rect x="68" y="95" width="44" height="42" rx="14" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+          <!-- Chest detail -->
+          <rect x="78" y="103" width="24" height="14" rx="4" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+          <circle cx="85" cy="110" r="2" fill="#6366f1" opacity="0.8"/>
+          <circle cx="90" cy="110" r="2" fill="#0ea5e9" opacity="0.8"/>
+          <circle cx="95" cy="110" r="2" fill="#10b981" opacity="0.8"/>
+
+          <!-- Helmet -->
+          <circle cx="90" cy="82" r="22" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+          <!-- Visor -->
+          <ellipse cx="90" cy="80" rx="13" ry="11" fill="#0f172a" stroke="#6366f1" stroke-width="1" opacity="0.9"/>
+          <!-- Visor reflection -->
+          <ellipse cx="85" cy="75" rx="4" ry="3" fill="#6366f1" opacity="0.15"/>
+          <path d="M84 73 Q87 71 90 73" stroke="#6366f1" stroke-width="0.8" fill="none" opacity="0.4"/>
+
+          <!-- Left arm -->
+          <rect x="48" y="98" width="22" height="12" rx="6" fill="#1e293b" stroke="#475569" stroke-width="1.5" transform="rotate(20 48 98)"/>
+          <!-- Left glove -->
+          <circle cx="42" cy="118" r="7" fill="#334155" stroke="#475569" stroke-width="1"/>
+
+          <!-- Right arm -->
+          <rect x="110" y="98" width="22" height="12" rx="6" fill="#1e293b" stroke="#475569" stroke-width="1.5" transform="rotate(-20 132 98)"/>
+          <!-- Right glove -->
+          <circle cx="138" cy="118" r="7" fill="#334155" stroke="#475569" stroke-width="1"/>
+
+          <!-- Legs -->
+          <rect x="72" y="132" width="14" height="22" rx="6" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+          <rect x="94" y="132" width="14" height="22" rx="6" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+          <!-- Boots -->
+          <rect x="69" y="150" width="20" height="10" rx="4" fill="#334155" stroke="#475569" stroke-width="1"/>
+          <rect x="91" y="150" width="20" height="10" rx="4" fill="#334155" stroke="#475569" stroke-width="1"/>
+        </g>
+
+        <!-- Floating wrench -->
+        <g class="float-fast" style="transform-origin: 35px 70px;">
+          <rect x="28" y="64" width="14" height="4" rx="2" fill="#475569" transform="rotate(-30 28 64)"/>
+          <circle cx="27" cy="62" r="5" fill="none" stroke="#475569" stroke-width="2"/>
+          <circle cx="42" cy="74" r="4" fill="none" stroke="#475569" stroke-width="2"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="error-badge">HTTP_STATUS · 404 · NOT_FOUND</div>
+
+    <div class="number-404">404</div>
+
+    <p class="tagline">Lost in space</p>
+    <p class="subtitle">
+      This page has drifted out of orbit.<br>
+      It may have been moved, deleted, or never existed.
+    </p>
+
+    <div class="actions">
+      <a href="/" class="btn-primary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+        Back to Home
+      </a>
+      <a href="javascript:history.back()" class="btn-secondary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+        Go Back
+      </a>
+    </div>
+  </div>
 </div>
